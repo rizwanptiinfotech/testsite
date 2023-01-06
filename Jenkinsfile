@@ -14,7 +14,7 @@ String iisApplicationName = "testsite"
 String iisApplicationPath = "C:\\inetpub\\wwwroot\\testsite"
 
 //IP of the target machine
-String targetServerIP = "10.0.21.41"
+String targetServerIP = "localhost"
 
 node () {
     stage('Checkout') {
