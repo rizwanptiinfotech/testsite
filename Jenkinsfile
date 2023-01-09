@@ -13,7 +13,7 @@ String iisApplicationName = "testsite"
 //Your site's directory defined in IIS on the target machine
 String iisApplicationPath = "C:\\inetpub\\wwwroot\\testsite"
 
-//IP of the target machinee
+//IP of the target machine
 String targetServerIP = "10.0.21.41"
 
 node () {
