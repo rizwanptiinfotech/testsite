@@ -35,6 +35,6 @@ node () {
         // """
     }
     stage('Deploy'){
-        withCredentials([usernamePassword(credentialsId: '58480f16-4e24-4362-b572-d2b90a3ae0e9', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) { bat """ "C:\\Program Files (x86)\\IIS\\Microsoft Web Deploy V3\\msdeploy.exe" -verb:sync -source:iisApp="${WORKSPACE}" -enableRule:AppOffline -dest:iisApp="${iisApplicationPath}",ComputerName="${targetServerIP}",UserName="$USERNAME",Password="$PASSWORD",AuthType="Basic" -allowUntrusted"""}
+        withCredentials([usernamePassword(credentialsId: '58480f16-4e24-4362-b572-d2b90a3ae0e9', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) { bat """ "C:\\Program Files (x86)\\IIS\\Microsoft Web Deploy V3\\msdeploy.exe" -verb:sync -source:iisApp="${WORKSPACE}" -enableRule:AppOffline -dest:iisApp="${iisApplicationPath}",ComputerName="http://${targetServerIP}",UserName="$USERNAME",Password="$PASSWORD",AuthType="Basic" -allowUntrusted"""}
     }
 }
