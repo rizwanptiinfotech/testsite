@@ -35,7 +35,7 @@ node () {
         // """
     }
     stage('Deploy'){
-        bat("xcopy ${WORKSPACE} ${iisApplicationPath} /EXCLUDE: C:\Users\rizwanp\AppData\Local\Jenkins\.jenkins\workspace\Jenkins_Demo_Pipeline\Jenkinsfile /O /X /E /H /K /Y")
+        bat("xcopy ${WORKSPACE} ${iisApplicationPath} /EXCLUDE: Jenkinsfile /O /X /E /H /K /Y")
         //xcopy /s /Y ${WORKSPACE} ${iisApplicationPath}
        // COPY [${WORKSPACE}] /A [${iisApplicationPath}] /A
         //withCredentials([usernamePassword(credentialsId: '5d098255-096a-4ea2-91a8-8a6d481c595f', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) { bat """ "C:\\Program Files (x86)\\IIS\\Microsoft Web Deploy V3\\msdeploy.exe" -verb:sync -source:iisApp="${WORKSPACE}" -enableRule:AppOffline -dest:iisApp="${iisApplicationName}",ComputerName="http://localhost/testsite/msdeploy.axd",UserName="$USERNAME",Password="$PASSWORD",AuthType="Basic" -allowUntrusted"""}
