@@ -16,6 +16,8 @@ String iisApplicationPath = "C:\\inetpub\\wwwroot\\testsite"
 //IP of the target machinee
 String targetServerIP = "10.0.21.41"
 
+String sourcepath=$WORKSPACE"\test.html"
+
 node () {
     stage('Checkout') {
         checkout([
@@ -35,7 +37,7 @@ node () {
         // """
     }
     stage('Deploy'){
-        bat("xcopy $WORKSPACE\test.html ${iisApplicationPath} /O /X /E /H /K /Y")
+        bat("xcopy $sourcepath ${iisApplicationPath} /O /X /E /H /K /Y")
         //xcopy /s /Y ${WORKSPACE} ${iisApplicationPath}
        // COPY [${WORKSPACE}] /A [${iisApplicationPath}] /A
         //withCredentials([usernamePassword(credentialsId: '5d098255-096a-4ea2-91a8-8a6d481c595f', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) { bat """ "C:\\Program Files (x86)\\IIS\\Microsoft Web Deploy V3\\msdeploy.exe" -verb:sync -source:iisApp="${WORKSPACE}" -enableRule:AppOffline -dest:iisApp="${iisApplicationName}",ComputerName="http://localhost/testsite/msdeploy.axd",UserName="$USERNAME",Password="$PASSWORD",AuthType="Basic" -allowUntrusted"""}
